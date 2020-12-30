@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2020_12_21_071603) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "password", null: false
     t.string "user_name", null: false
     t.string "full_name", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_071603) do
     t.integer "gender", default: 1, null: false
     t.string "email", null: false
     t.date "birthday", null: false
-    t.string "password", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -8,7 +8,8 @@ gnames = ["太郎", "次郎", "花子"]
     email: "#{names[idx]}@example.com",
     birthday: "#{rand(1980..2000)}-12-01",
     gender: [1, 2, 3][idx % 3],
-    password: "sirius"
+    password: "sirius",
+    password_confirmation: "sirius"
   )
 end
 

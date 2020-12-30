@@ -32,5 +32,5 @@ PlaceBooking.create(
         p = Place.find(idx)
         e = Event.find(idx)
         e.capacity = p.capacity
-        e.save #いらないかも
+        e.save
 end

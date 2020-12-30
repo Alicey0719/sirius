@@ -7,7 +7,7 @@ class CreateMembers < ActiveRecord::Migration[5.2]
       t.integer :gender, null: false, default: 1
       t.string :email, null: false
       t.date :birthday, null: false
-      t.string :password, null: false
+      t.string :password_digest, null: false
 
       t.timestamps
     end
