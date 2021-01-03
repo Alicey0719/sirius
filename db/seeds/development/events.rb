@@ -5,7 +5,7 @@ names2 = ["みんなの音楽会", "スマブラ大会", "ROCK◎FESTIVAL", "ジ
   Event.create(
     host_id: member.id,
     name: "#{names1[idx % 4]} #{names2[idx % 5]}",
-    held_at: "2021-#{rand(1..12)}-01",
+    held_at: "2038-#{rand(1..12)}-01",
     capacity: 0,
     price: rand(1000..3000),
     detail: "--イベント詳細を記述--"

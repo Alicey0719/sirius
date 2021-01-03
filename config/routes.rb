@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     post "login" => "sessions#admin_login"
     get "top"
     resources :members, except: [:create, :new]
-    resources :events 
+    resources :events, except: [:create, :new]
     resources :places
   end
 

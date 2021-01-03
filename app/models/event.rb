@@ -4,8 +4,9 @@ class Event < ApplicationRecord
     has_many :event_tags
     has_many :tags, through: :event_tags
     has_many :tickets
-    has_many :buyers, through: :tickets, source: :member    
-    has_one :place, dependent: :destroy, through: :place_booking
+    has_many :buyers, through: :tickets, source: :member
+    has_one :place_booking, dependent: :destroy
+    has_one :place, through: :place_booking    
     belongs_to :member, foreign_key: "host_id" 
 
     #Validates
