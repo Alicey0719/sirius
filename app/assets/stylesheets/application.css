@@ -41,6 +41,18 @@ body {
     height: 52px;
 }
 
+.navi ul li p {
+    /* text */
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0px;
+    /*Safari対応*/
+    height: 52px;
+}
+
 .navi ul li span {
     /* 現ページ */
     display: block;

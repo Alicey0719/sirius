@@ -2,9 +2,16 @@
   <ul>
     <%= image_tag "logo.png", size: "150x52", alt: "logo" %>
     <%= menu_link_to "Top", :root %>
-    <%= menu_link_to "Search", "#" %>
-    <%= menu_link_to "Create", "#" %>
-    <%= menu_link_to "MyPage", "#" %>
-    <%= menu_link_to "Login", :login %>
+    <%= menu_link_to "Search", :events %>
+    <%= menu_link_to "Create", :new_1_events if current_member %>
+    <%= menu_link_to "MyPage", :my if current_member %>
+    <%= 
+      if current_member then
+        content_tag(:li) do 
+          content_tag(:p, "#{current_member.user_name}さん") 
+        end
+      end 
+    %>
+    <%= menu_link_to "Login", :login if !current_member %>
   </ul>
 </nav>
