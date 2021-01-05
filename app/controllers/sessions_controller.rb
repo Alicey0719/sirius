@@ -5,10 +5,12 @@ class SessionsController < ApplicationController
         if member&.authenticate(params[:password])
             #session[:member_id] = member.id
             cookies.signed[:member_id] = {value:member.id, expires:10080.minutes.from_now}
+            redirect_to :root
         else
             flash.alert = "ユーザ名とパスワードが一致しません"
+            redirect_to :login
         end
-        redirect_to :root
+        
     end
 
     def logout
@@ -22,10 +24,12 @@ class SessionsController < ApplicationController
         if admin&.authenticate(params[:password])
             #session[:admin_id] = admin.id
             cookies.signed[:admin_id] = {value:admin.id, expires:10080.minutes.from_now}
+            redirect_to :top_admin
         else
             flash.alert = "ユーザ名とパスワードが一致しません"
+            redirect_to :login_admin
         end
-        redirect_to :top_admin
+        
     end
 
     def admin_logout

@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
         @member = Member.new(usrParams)
         if @member.save then
             cookies.signed[:member_id] = {value:@member.id, expires:10080.minutes.from_now}
-            redirect_to root_path ,notice: "会員登録しました"
+            redirect_to :root, notice: "会員登録しました"
         else
             render "new"
         end
