@@ -11,8 +11,9 @@ class Member < ApplicationRecord
     has_many :like_members,  class_name: "Reputation", foreign_key: "like_member_id"
 
     #Validates
+    attr_accessor :current_password
     validates :password,
-        presence: true,
+        presence: {if: :current_password},
         length: {minimum: 4, maximum: 32},
         format: {with: /\A[A-Za-z0-9]*\z/}
     validates :user_name,
@@ -32,11 +33,5 @@ class Member < ApplicationRecord
         email: {allow_blank: true}
     validates :birthday,
         date: {before: Proc.new{(Date.today)}}  
-
-
-    #memo
-    # attr_accessor :current_password
-    # validates :password, presence:{if: :current_password}
-
 
 end

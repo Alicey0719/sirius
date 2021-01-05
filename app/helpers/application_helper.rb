@@ -1,7 +1,7 @@
 module ApplicationHelper
     def page_title
         title = "Sirius"
-        title = @page_title + "-" + title if@page_title
+        title = title + " | " + @page_title if @page_title
         title
     end
 

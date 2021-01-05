@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :members
 
-  resource :account, only: [:new , :create]
+  resource :account, only: [:new, :create]
 
   resource :my do
     get :info
