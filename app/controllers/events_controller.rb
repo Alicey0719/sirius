@@ -17,5 +17,9 @@ class EventsController < ApplicationController
         render "index"
     end
 
+    def show
+        @event = Event.find(params[:id])
+    end
+
 
 end

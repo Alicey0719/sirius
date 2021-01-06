@@ -1,0 +1,22 @@
+<table class="attr">
+  <tr>
+    <th>イベント名</th>
+    <td><%= @event.name %></td>
+  </tr>
+  <tr>
+    <th>主催者</th>
+    <td><%= link_to @event.member.user_name, @event.member %></td>
+  </tr>
+  <tr>
+    <th>開催日</th>
+    <td><%= @event.held_at&.strftime("%Y年%m月%d日") %></td>
+  </tr>
+  <tr>
+    <th>価格</th>
+    <td><%= @event.price.to_s(:delimited) %>円</td>
+  </tr>
+  <tr>
+    <th>詳細</th>
+    <td><%= @event.detail %></td>
+  </tr>
+</table>
