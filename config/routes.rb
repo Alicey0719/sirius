@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "login" => "top#login", as: "login"
   post "login" => "sessions#login"
+  post "logout" => "sessions#logout", as: "logout"
 
   resources :events, except: [:new] do
     member do
@@ -18,11 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :members
+  resources :members, only: [:show]
 
-  resource :account, only: [:new, :create]
+  resource :account, only: [:new, :create, :destroy]
 
-  resource :my do
+  resource :my,except: [:new, :create, :destroy] do
     get :info
     get :ticket_his
     get :tickets
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
   resource :admin do
     get "login" => "admin#login", as: "login"
     post "login" => "sessions#admin_login"
+    post "logout" => "sessions#admin_logout", as: "logout"
     get "top"
     resources :members, except: [:create, :new]
     resources :events, except: [:create, :new]
