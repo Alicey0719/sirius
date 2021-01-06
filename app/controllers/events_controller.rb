@@ -7,7 +7,14 @@ class EventsController < ApplicationController
     end
 
     def index
-        @events = Event.all
+        @events = Event.order("held_at")
+            .page(params[:page]).per(15)
+    end
+
+    def search
+        @events = Event.search(params[:sword])
+            .page(params[:page]).per(15)
+        render "index"
     end
 
 

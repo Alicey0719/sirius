@@ -1,0 +1,33 @@
+<% @page_title = "イベント一覧" %>
+<h1><%= @page_title %></h1>
+
+<%= form_tag :search_events, method: :get, class: "search" do %>
+  <%= text_field_tag "sword", params[:sword] %>
+  <%= submit_tag "検索" %>
+<% end %>
+
+<% if @events.present? %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>イベント名</th>
+        <th>開催者</th>
+        <th>開催日</th>
+        <th>価格</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |e| %>
+        <tr>
+          <td style="text-align: right"><%= link_to e.name, e %></td>
+          <td style="text-align: right"><%= link_to e.member.user_name, e.member %></td>
+          <td style="text-align: right"><%= e.held_at&.strftime("%Y年%m月%d日") %></td>
+          <td style="text-align: right"><%= e.price.to_s(:delimited) %>円</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @events %>
+<% else %>
+  <p>イベントが見つかりませんでした。</p>
+<% end %>

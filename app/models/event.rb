@@ -26,4 +26,15 @@ class Event < ApplicationRecord
         presence: true,
         length: {maximum: 1500}
 
+    #Method
+    class << self
+        def search(query)
+            rel = order("held_at")
+            if query.present?
+                rel = rel.where("name LIKE ?", "%#{query}%")
+            end
+            return rel
+        end
+    end
+
 end

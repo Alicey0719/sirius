@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       patch :like, :unlike
     end
     collection do
+      get :search
       get :new_1
       get :new_2
     end
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
 
   resource :account, only: [:new, :create, :destroy]
 
-  resource :my,except: [:new, :create, :destroy] do
+  resource :my, except: [:new, :create, :destroy] do
     get :info
     get :ticket_his
     get :tickets

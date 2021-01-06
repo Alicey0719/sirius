@@ -10,6 +10,6 @@
     <li> <%= link_to "イベント開催履歴", :event_his_my %> </li>
     <li> <%= link_to "会員情報", :info_my %> </li>
     <li> <%= link_to "退会", :account, method: :delete, data: { confirm: "本当に退会しますか?" } %> </li>
-    <li> <%= link_to "ログアウト", :logout, method: :post %> </li>
+    <li> <%= link_to "ログアウト", :logout, method: :post, data: { confirm: "ログアウトしますか?" } %> </li>
 </ul>
 

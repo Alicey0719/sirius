@@ -6,6 +6,10 @@ class MyController < ApplicationController
     end
 
     def info
+        @member = current_member
+    end
+
+    def edit
     end
 
     def bkm
@@ -19,6 +23,6 @@ class MyController < ApplicationController
 
     def event_his
     end
-    
+
 
 end
