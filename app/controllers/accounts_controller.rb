@@ -1,5 +1,11 @@
 class AccountsController < ApplicationController
 
+    def destroy
+        m = current_member
+        m.destroy
+        redirect_to :root, notice: "退会処理が完了しました。ご利用ありがとうございました。"
+    end
+
     def new
         @member = Member.new(birthday: Date.new(2000,1,1))
     end

@@ -2,5 +2,14 @@
 
 <h1><%= @page_title %></h1>
 
-
+<ul>
+    <li> <%= link_to "ブックマーク", :bkm_my %> </li>
+    <li> <%= link_to "保有チケット", :tickets_my %> </li>
+    <li> <%= link_to "購入履歴", :ticket_his_my %> </li>    
+    <li> <%= link_to "チケット販売状況", :tickets_stat_my %> </li>    
+    <li> <%= link_to "イベント開催履歴", :event_his_my %> </li>
+    <li> <%= link_to "会員情報", :info_my %> </li>
+    <li> <%= link_to "退会", :account, method: :delete, data: { confirm: "本当に退会しますか?" } %> </li>
+    <li> <%= link_to "ログアウト", :logout, method: :post %> </li>
+</ul>
 
