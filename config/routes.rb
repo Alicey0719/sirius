@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get :buy
       post "buy" => "events#buy_create", as: "buy_create"
       get "buy_result" => "events#result", as: "result"
-      patch :like, :unlike
+      patch :like, :unlike, :bkm, :unbkm
     end
     collection do
       get :search
