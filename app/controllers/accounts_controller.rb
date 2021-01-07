@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
 
+    before_action :login_required, except: [:new, :create]
+
     def destroy
         m = current_member
         m.destroy
@@ -20,6 +22,7 @@ class AccountsController < ApplicationController
         end
     end
 
+    #privateMethod
     private def usrParams
         params.require(:member).permit(
             :user_name,

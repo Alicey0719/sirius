@@ -14,8 +14,8 @@ class Member < ApplicationRecord
     attr_accessor :current_password
     validates :password,
         presence: {if: :current_password},
-        length: {minimum: 4, maximum: 32},
-        format: {with: /\A[A-Za-z0-9]*\z/}
+        length: {minimum: 4, maximum: 32, allow_blank: true},
+        format: {with: /\A[A-Za-z0-9]*\z/, allow_blank: true}
     validates :user_name,
         presence: true,
         format: {with: /\A[A-Za-z][A-Za-z0-9]*\z/, allow_blank: true},
