@@ -29,9 +29,14 @@ class MyController < ApplicationController
     end
 
     def tickets
+        #!!!!!!!開催日での絞り込み未実装!!!!!!!!!!!!
+        @tickets = current_member.tickets
+            .order("created_at").page(params[:page]).per(15)
     end
 
     def ticket_his
+        @tickets = current_member.tickets
+            .order("created_at").page(params[:page]).per(15)
     end
 
     def event_his
