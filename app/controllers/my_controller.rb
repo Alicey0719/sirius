@@ -39,7 +39,14 @@ class MyController < ApplicationController
             .order("created_at").page(params[:page]).per(15)
     end
 
+    def tickets_stat
+        @events = current_member.events.where('held_at >= ?', Date.today)
+            .order("held_at").page(params[:page]).per(15)
+    end
+
     def event_his
+        @events = current_member.events
+            .order("held_at").page(params[:page]).per(15)
     end
 
     #privateMethod

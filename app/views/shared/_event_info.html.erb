@@ -16,6 +16,10 @@
     <td><%= @event.price.to_s(:delimited) %>円</td>
   </tr>
   <tr>
+    <th>限定数</th>
+    <td><%= @event.capacity.to_s(:delimited) %></td>
+  </tr>
+  <tr>
     <th>詳細</th>
     <td><%= @event.detail %></td>
   </tr>
