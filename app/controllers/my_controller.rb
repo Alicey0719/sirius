@@ -56,8 +56,7 @@ class MyController < ApplicationController
             :full_name,
             :gender,
             :birthday,
-            :email,
-            :password
+            :email
         )
     end
 

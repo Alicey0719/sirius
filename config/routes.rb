@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :members, only: [:show]
 
   resource :account, only: [:new, :create, :destroy]
+  resource :password, only: [:edit, :update]
 
   resource :my, except: [:new, :create, :destroy] do
     get :info
