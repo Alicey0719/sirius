@@ -5,11 +5,11 @@ class EventsController < ApplicationController
 
     def new_1
         #会場, 時間帯
-        @event = Event.new(
-            host_id: current_member.id, 
-            held_at: Date.today.next
-            )
+        @event = Event.new(held_at: Date.today.next)
+        @event.member = current_member  
+
         @places = Place.all.readonly #ランク制限未実装
+
         @event.place_booking = PlaceBooking.new(
             start_time: Time.now,
             end_time: Date.today.next
@@ -19,7 +19,10 @@ class EventsController < ApplicationController
 
     def new_2
         #その他イベント情報設定
-        @event = Event.new(eventParams)     
+        @event = Event.new(eventParams)
+        @event.member = current_member
+        @event.tags = Tag.all    
+        
 
         if placeBookingParams[:place_id].present? then            
             @event.place_booking = PlaceBooking.new(placeBookingParams)
@@ -51,8 +54,34 @@ class EventsController < ApplicationController
     def edit
         @event = Event.find(params[:id])
     end
+
+    def create
+        @event = Event.new(eventParams)
+        @event.member = current_member
+        
+        if placeBookingParams[:place_id].present? then            
+            @event.place_booking = PlaceBooking.new(placeBookingParams)
+            if !@event.place_booking.valid? then
+                redirect_to :new_1_events
+            end
+        end      
+        
+        p @event.tags
+
+        if @event.save then            
+            @event.tags = Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
+            if @event.save then
+                redirect_to @event, notice: "イベントを作成しました"
+            else
+                render "new_2"
+            end
+        else
+            render "new_2"
+        end        
+    end
     
     def update
+        p "=================UPDATE================="
     end
 
     #Method
@@ -73,6 +102,10 @@ class EventsController < ApplicationController
             :end_time,
             :place_id        
         )
+    end
+
+    private def tagParams
+        params.require(:tagData).permit(tag_ids: [])
     end
 
     private def timeDateConverte(t, d)

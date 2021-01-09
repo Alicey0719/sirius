@@ -1,0 +1,76 @@
+<% @page_title = "イベントの作成 2/2" %>
+<h1><%= @page_title %></h1>
+
+<%= form_for @event do |form| %>
+    <table class="attr">
+        <tr>
+            <th>開催者</th>
+            <td><%= @event.member.full_name %></td>
+        </tr>
+        <tr>
+            <th>開催予定日</th>
+            <td><%= @event.held_at&.strftime("%Y年%m月%d日") %></td>
+        </tr>
+        <tr>
+            <th>開催場所</th>
+            <td><%= @event.place_booking.place.name %>
+                (最大座席数：<%= @event.place_booking.place.capacity %>)</td>
+        </tr>
+        <tr>
+            <th>会場利用時間</th>
+            <td><%= @event.place_booking.start_time&.strftime("%Y年%m月%d日 %R") %>から<br />
+                <%= @event.place_booking.end_time&.strftime("%Y年%m月%d日 %R") %>まで</td>      
+        </tr>
+
+        <!-- ココから新規 -->
+        <tr>
+            <th>イベント名</th>
+            <td><%= form.text_field :name, {
+                size: '20x1', 
+                maxlength: 20
+                } %></td>
+        </tr>
+        <tr>
+            <th>チケット在庫数</th>
+            <td><%= form.number_field :capacity, {
+                size: '20x1',
+                value: @event.place_booking.place.capacity,
+                max:  @event.place_booking.place.capacity,
+                min: 1
+                } %></td>
+        </tr>
+        <tr>
+            <th>単価</th>
+            <td><%= form.number_field :price, {
+                size: '20x1',
+                min: 0
+                } %></td>
+        </tr>
+        <tr>
+            <th>詳細</th>
+            <td><%= form.text_area :detail, {
+                size: '50x20',
+                maxlength: 1500,
+                placeholder: "・イベントの概要\n・詳細スケジュール\n・物販情報\n等をお書きください."
+                } %></td>
+        </tr>
+        <tr>
+            <th>タグ</th>
+            <td><%= fields_for :tagData do |t| %>
+                <%= t.collection_check_boxes(:tag_ids, @event.tags, :id, :name) do |cb| 
+                        cb.label { cb.check_box({checked: false}) + cb.text }
+                    end%>
+                <%end%>
+            </td>
+        </tr>
+        <%= form.hidden_field :held_at, value: @event.held_at %>
+        <%= fields_for :place_booking do |pb| %>
+            <%= pb.hidden_field :place_id, value: @event.place_booking.place_id %>
+            <%= pb.hidden_field :start_time, value: @event.place_booking.start_time %>
+            <%= pb.hidden_field :end_time, value: @event.place_booking.end_time %>
+        <%end%>
+    </table>
+    
+
+    <div><%= form.submit "作成", data: { confirm: "本当に作成しますか?" } %></div>
+<% end %>
