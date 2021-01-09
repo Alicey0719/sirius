@@ -57,7 +57,7 @@
         <tr>
             <th>タグ</th>
             <td><%= fields_for :tagData do |t| %>
-                <%= t.collection_check_boxes(:tag_ids, @event.tags, :id, :name) do |cb| 
+                <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |cb| 
                         cb.label { cb.check_box({checked: false}) + cb.text }
                     end%>
                 <%end%>

@@ -81,7 +81,14 @@ class EventsController < ApplicationController
     end
     
     def update
-        p "=================UPDATE================="
+        @event = Event.find(params[:id])
+        @event.assign_attributes(eventParams)
+        @event.tags = Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
+        if @event.save
+            redirect_to @event, notice: "イベントを更新しました"
+        else
+            render "edit"
+        end
     end
 
     #Method
