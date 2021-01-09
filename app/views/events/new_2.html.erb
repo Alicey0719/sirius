@@ -11,16 +11,18 @@
             <th>開催予定日</th>
             <td><%= @event.held_at&.strftime("%Y年%m月%d日") %></td>
         </tr>
-        <tr>
-            <th>開催場所</th>
-            <td><%= @event.place_booking.place.name %>
-                (最大座席数：<%= @event.place_booking.place.capacity %>)</td>
-        </tr>
-        <tr>
-            <th>会場利用時間</th>
-            <td><%= @event.place_booking.start_time&.strftime("%Y年%m月%d日 %R") %>から<br />
-                <%= @event.place_booking.end_time&.strftime("%Y年%m月%d日 %R") %>まで</td>      
-        </tr>
+        <% if @event.place_booking then %>
+            <tr>
+                <th>開催場所</th>
+                <td><%= @event.place_booking.place.name %>
+                    (最大座席数：<%= @event.place_booking.place.capacity %>)</td>
+            </tr>
+            <tr>
+                <th>会場利用時間</th>
+                <td><%= @event.place_booking.start_time&.strftime("%Y年%m月%d日 %R") %>から<br />
+                    <%= @event.place_booking.end_time&.strftime("%Y年%m月%d日 %R") %>まで</td>      
+            </tr>
+        <%end%>
 
         <!-- ココから新規 -->
         <tr>
@@ -32,12 +34,19 @@
         </tr>
         <tr>
             <th>チケット在庫数</th>
-            <td><%= form.number_field :capacity, {
-                size: '20x1',
-                value: @event.place_booking.place.capacity,
-                max:  @event.place_booking.place.capacity,
-                min: 1
-                } %></td>
+            <% if @event.place_booking then %>
+                <td><%= form.number_field :capacity, {
+                    size: '20x1',
+                    value: @event.place_booking.place.capacity,
+                    max:  @event.place_booking.place.capacity,
+                    min: 1
+                    } %></td>
+            <%else%>
+                <td><%= form.number_field :capacity, {
+                    size: '20x1',
+                    min: 1
+                    } %></td>
+            <%end%>
         </tr>
         <tr>
             <th>単価</th>
@@ -64,10 +73,16 @@
             </td>
         </tr>
         <%= form.hidden_field :held_at, value: @event.held_at %>
-        <%= fields_for :place_booking do |pb| %>
-            <%= pb.hidden_field :place_id, value: @event.place_booking.place_id %>
-            <%= pb.hidden_field :start_time, value: @event.place_booking.start_time %>
-            <%= pb.hidden_field :end_time, value: @event.place_booking.end_time %>
+        <% if @event.place_booking then %>
+            <%= fields_for :place_booking do |pb| %>
+                <%= pb.hidden_field :place_id, value: @event.place_booking.place_id %>
+                <%= pb.hidden_field :start_time, value: @event.place_booking.start_time %>
+                <%= pb.hidden_field :end_time, value: @event.place_booking.end_time %>
+            <%end%>
+        <%else%>
+            <%= fields_for :place_booking do |pb| %>
+                <%= pb.hidden_field :place_id, value: "" %>
+            <%end%>
         <%end%>
     </table>
     

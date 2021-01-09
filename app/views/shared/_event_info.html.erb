@@ -12,6 +12,14 @@
     <td><%= @event.held_at&.strftime("%Y年%m月%d日") %></td>
   </tr>
   <tr>
+    <th>場所</th>
+    <% if @event.place_booking then %>
+      <td><%= @event.place_booking.place.name %></td>
+    <%else%>
+      <td>詳細をご確認ください</td>
+    <%end%>
+  </tr>  
+  <tr>
     <th>価格</th>
     <td><%= @event.price.to_s(:delimited) %>円</td>
   </tr>
