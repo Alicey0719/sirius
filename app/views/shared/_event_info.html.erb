@@ -23,4 +23,13 @@
     <th>詳細</th>
     <td><%= @event.detail %></td>
   </tr>
+  <tr>
+    <th>タグ</th>
+    <td>
+      <% @event.tags.each.with_index(1) do |t, c| %>
+        <%= t.name %>
+        <%= p ", " if @event.tags.count > c  %>
+      <%end%>          
+    </td>
+  </tr>
 </table>
