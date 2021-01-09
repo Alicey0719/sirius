@@ -1,0 +1,32 @@
+<% @page_title = "イベントの作成 1/2" %>
+<h1><%= @page_title %></h1>
+
+<%= form_for @event, as: "event", url: :new_2_events, method: :get do |form| %>
+  <%= render "shared/errors", obj: @event %>
+
+  <table class="attr">
+    <tr>
+      <th>開催者</th>
+      <td><%= @event.member.full_name %></td>
+    </tr>
+    <tr>
+      <th>開催予定日</th>
+      <td><%= form.date_select :held_at,
+              start_year: Time.current.year, end_year: Time.current.year+10,
+              use_month_numbers: true %></td>
+    </tr>
+    <%= form_for :place_booking do |pb| %>
+        <tr>
+            <th>開催場所</th>
+            <td><%= pb.collection_select(:place_id, @places, :id, :name, {:include_blank => "会場を自分で用意する"}) %></td>
+        </tr>
+        <tr>
+            <th>会場利用時間</th>
+            <td><%= pb.time_select :start_time %>から<br />
+                <%= pb.time_select :end_time %>まで</td>      
+        </tr>
+    <% end %>
+  </table>
+
+  <div><%= form.submit "次へ" %></div>
+<% end %>

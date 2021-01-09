@@ -73,3 +73,7 @@ gem 'date_validator', '~> 0.10.0'
 #pagenate
 gem 'kaminari'
 gem 'kaminari-i18n'
+
+# debug
+gem 'whiny_validation'
+

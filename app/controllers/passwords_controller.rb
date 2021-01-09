@@ -9,7 +9,7 @@ class PasswordsController < ApplicationController
     def update
         @member = current_member
         current_password = pwParam[:current_password]
-
+        
         if current_password.present?
             if @member.authenticate(current_password)
                 @member.assign_attributes(pwParam)
