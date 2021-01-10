@@ -18,7 +18,10 @@
             <td style="text-align: right"><%= e.price.to_s(:delimited) %>円</td>
             <td style="text-align: right"><%= e.capacity.to_s(:delimited) %></td>
             <td style="text-align: right"><%= e.tickets.count.to_s(:delimited) %></td>
-            <td style="text-align: right"><%= link_to "編集", edit_event_path(e) %></td>
+            <td style="text-align: right">
+              <%= link_to "編集", edit_event_path(e) %>
+              <%= link_to "削除", event_path(e), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+            </td>
         </tr>
       <% end %>
     </tbody>

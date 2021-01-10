@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
     def destroy
         m = current_member
         m.destroy
-        redirect_to :root, notice: "退会処理が完了しました。ご利用ありがとうございました。"
+        redirect_to :root, notice: "退会処理が完了しました。ご利用ありがとうございました"
     end
 
     def new

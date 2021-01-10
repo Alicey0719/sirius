@@ -3,6 +3,7 @@ class EventsController < ApplicationController
     before_action :login_required, except: [:index, :search, :show]
     before_action :edit_member, only: [:edit, :update]
 
+    #StdAction
     def new_1
         #会場, 時間帯
         @event = Event.new(held_at: Date.today.next)
@@ -91,7 +92,55 @@ class EventsController < ApplicationController
         end
     end
 
-    #Method
+    def destroy
+        e = Event.find(params[:id])
+        e.destroy
+        redirect_to :event_his_my, notice: "イベントが削除されました"
+    end
+
+    #BuyAction
+    def buy
+        @event = Event.find(params[:id])
+    end
+
+    def buy_create
+        p "=========="
+        p params[:id].to_i
+        p ticketParams[:num].to_i
+        stat = false
+        @event = Event.find(params[:id].to_i)
+        ActiveRecord::Base.transaction do
+            1.upto(ticketParams[:num].to_i) do |n|
+                t = Ticket.new(
+                    member_id: current_member.id,
+                    event_id: @event.id
+                )
+                if n ==5 then 
+                    t = Ticket.new(
+                    member_id: current_member.id,
+                    event_id: -1
+                    )
+                end
+                if t.save then
+                    stat = true
+                else
+                    stat = false
+                    raise ActiveRecord::Rollback
+                end
+            end
+        end
+
+        if stat then
+            redirect_to result_event_path(@event.id)
+        else
+            render "buy"
+        end
+    end
+
+    def result
+    end
+
+    #StrongParams
     private def eventParams
         params.require(:event).permit(
             :host_id,
@@ -115,6 +164,11 @@ class EventsController < ApplicationController
         params.require(:tagData).permit(tag_ids: [])
     end
 
+    private def ticketParams
+        params.require(:ticket).permit(:num)
+    end
+
+    #Method
     private def timeDateConverte(t, d)
         #第1引数tのDateだけをdに揃えて日付ｄ時間tな文字列をつくるメソッド
         return "#{d.year}-#{d.month}-#{d.day} #{t.hour}:#{t.min}:#{t.sec}"

@@ -1,0 +1,28 @@
+<% @page_title = "'#{@event.name}'チケットの購入" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar">
+    <%= link_to "戻る", :back %>
+</div>
+
+<div class="eventInfo">
+    <%= render "shared/event_info" %>
+</div>
+
+<div class="buyForm">
+    <%= form_for :ticket, url: :buy_create_event, method: :post do |form| %>
+        <p>チケットをご確認の上、枚数を指定してください</p>
+        <table class="attr">
+            <tr>
+                <th>枚数</th>
+                <td><%= form.number_field :num, {
+                        autocomplete: "off",
+                        max:50,                   
+                        min:1, 
+                        value:1
+                        } %></td>
+            </tr>
+        </table>
+        <div><%= form.submit "購入" %></div>
+    <% end %>
+</div>
