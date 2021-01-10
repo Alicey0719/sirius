@@ -103,7 +103,7 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
     end
 
-    def buy_create        
+    def buy_create
         stat = false
         @event = Event.find(params[:id].to_i)
         ActiveRecord::Base.transaction do

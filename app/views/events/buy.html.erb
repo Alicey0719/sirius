@@ -2,7 +2,7 @@
 <h1><%= @page_title %></h1>
 
 <%= render "shared/errors", obj: @event %>
-<%= render "shared/errors", obj: @t %>
+<%= render "shared/errors", obj: @t if @t %>
 
 <div class="toolbar">
     <%= link_to "戻る", :back %>

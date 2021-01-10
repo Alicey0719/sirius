@@ -2,6 +2,7 @@
 <h1><%= @page_title %></h1>
 
 <%= form_for @event do |form| %>
+    <%= render "shared/errors", obj: @event %>
     <table class="attr">
         <tr>
             <th>開催者</th>
