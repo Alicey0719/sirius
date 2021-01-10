@@ -2,12 +2,16 @@
 
 <h1><%= @page_title %></h1>
 
-<div class="toolbar">
-    <%= link_to "編集", [:edit, @event] if @event.host_id == current_member.id %>
-</div>
+<%if current_member%>
+    <div class="toolbar">
+        <%= link_to "編集", [:edit, @event] if @event.host_id == current_member.id %>
+    </div>
+<%end%>
 
 <%= render "shared/event_info" %>
 
-<div class="buy_button">
-    <%= link_to  "購入", buy_event_path(@event) %>
-</div>
+<%if current_member%>
+    <div class="buy_button">
+        <%= link_to  "購入", buy_event_path(@event) %>
+    </div>
+<%end%>
