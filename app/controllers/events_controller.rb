@@ -31,6 +31,7 @@ class EventsController < ApplicationController
             @event.place_booking.end_time = timeDateConverte(@event.place_booking.end_time, @event.held_at)
 
             if !@event.place_booking.valid? then
+                cookies.signed[:pb] = {value:@event.place_booking.errors.full_messages, expires:30.seconds.from_now}
                 redirect_to :new_1_events
             end
         end

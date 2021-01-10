@@ -1,6 +1,30 @@
 class PlaceBooking < ApplicationRecord
 
+    #Association
     belongs_to :place
     belongs_to :event
+
+    #Validate
+    validates :event_id,
+        presence: true
+    validates :place_id,
+        presence: true
+    validates :start_time,
+        presence: true
+    validates :end_time,
+        presence: true
+    validate :start_end_check
+    validate :current_before
+
+    #Method
+    def start_end_check
+        #会場利用時間が矛盾しないか
+        errors.add(:base, :placetime_startend) unless self.start_time < self.end_time
+    end
+    
+    def current_before
+        #会場利用時間が現在時刻より後か
+        errors.add(:base, :placetime_current_before) unless Time.now < self.start_time
+    end
 
 end

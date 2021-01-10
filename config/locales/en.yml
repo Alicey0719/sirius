@@ -48,3 +48,5 @@ en:
       messages:
         invalid: "Validation Error."
         soldout: "Already sold out"
+        placetime_startend: "会場利用時間を確認してください"
+        placetime_current_before: "会場利用時間は現在時刻より前に設定できません"
