@@ -34,4 +34,9 @@ class Member < ApplicationRecord
     validates :birthday,
         date: {before: Proc.new{(Date.today)}}  
 
+    #Method
+    def bookmark?(event)
+        event && event.member != self && !bookmarks.exists?(event_id: event.id)
+    end
+
 end

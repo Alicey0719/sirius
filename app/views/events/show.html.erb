@@ -13,5 +13,10 @@
 <%if current_member%>
     <div class="buy_button">
         <%= link_to  "購入", buy_event_path(@event) %>
+        <% if current_member.bookmark?(@event) %>
+            <%= link_to "ブックマークに追加", [:bkm, @event], method: :patch, class: "button" %>
+        <% elsif !(current_member == @event.member) %>
+             <%= link_to "ブックマーク解除", [:unbkm, @event], method: :patch, class: "button" %>
+        <% end %>
     </div>
 <%end%>

@@ -131,6 +131,19 @@ class EventsController < ApplicationController
     def result
     end
 
+    #bkm
+    def bkm
+        @event = Event.find(params[:id])
+        current_member.bookmarked_events << @event
+        redirect_to @event, notice: "ブックマークに登録しました"
+    end
+
+    def unbkm
+        event = Event.find(params[:id])
+        current_member.bookmarked_events.destroy(event)
+        redirect_to event, notice: "ブックマークを解除しました"
+    end
+
     #StrongParams
     private def eventParams
         params.require(:event).permit(
