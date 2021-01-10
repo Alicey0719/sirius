@@ -30,7 +30,7 @@ class EventsController < ApplicationController
             @event.place_booking.start_time = timeDateConverte(@event.place_booking.start_time, @event.held_at)
             @event.place_booking.end_time = timeDateConverte(@event.place_booking.end_time, @event.held_at)
 
-            if !@event.place_booking.valid? then
+            if !@event.place_booking.valid?(:check) then
                 cookies.signed[:pb] = {value:@event.place_booking.errors.full_messages, expires:30.seconds.from_now}
                 redirect_to :new_1_events
             end
@@ -71,7 +71,7 @@ class EventsController < ApplicationController
         if placeBookingParams[:place_id].present? then            
             @event.place_booking = PlaceBooking.new(placeBookingParams)
             if !@event.place_booking.valid? then
-                redirect_to :new_1_events
+                redirect_to :new_1_events and return
             end
         end      
         
@@ -80,12 +80,12 @@ class EventsController < ApplicationController
         if @event.save then            
             @event.tags = Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
             if @event.save then
-                redirect_to @event, notice: "イベントを作成しました"
+                redirect_to @event, notice: "イベントを作成しました" and return
             else
-                render "new_2"
+                render "new_2" and return
             end
         else
-            render "new_2"
+            render "new_2" and return
         end        
     end
     

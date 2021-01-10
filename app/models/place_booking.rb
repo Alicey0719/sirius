@@ -6,7 +6,8 @@ class PlaceBooking < ApplicationRecord
 
     #Validate
     validates :event_id,
-        presence: true
+        presence: true,
+        unless: -> {validation_context == :check}
     validates :place_id,
         presence: true
     validates :start_time,
@@ -15,6 +16,7 @@ class PlaceBooking < ApplicationRecord
         presence: true
     validate :start_end_check
     validate :current_before
+    validate :overlap_check
 
     #Method
     def start_end_check
@@ -25,6 +27,12 @@ class PlaceBooking < ApplicationRecord
     def current_before
         #会場利用時間が現在時刻より後か
         errors.add(:base, :placetime_current_before) unless Time.now < self.start_time
+    end
+
+    def overlap_check
+        if PlaceBooking.where('end_time > ? and ? > start_time', self.start_time, self.end_time).present? then
+            errors.add(:base, :overlap_check)
+        end
     end
 
 end
