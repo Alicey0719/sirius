@@ -43,8 +43,15 @@ class EventsController < ApplicationController
     end
 
     def search
-        @events = Event.search(params[:sword])
-            .page(params[:page]).per(15)
+        @tags = Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
+        if tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i}.present? then
+            @events = Event.search(params[:sword])
+                .where(tags:tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
+                .page(params[:page]).per(15)
+        else
+            @events = Event.search(params[:sword])
+                .page(params[:page]).per(15)
+        end
         render "index"
     end
 
