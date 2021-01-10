@@ -9,6 +9,7 @@
         <th>開催者</th>
         <th>開催日</th>
         <th>価格</th>
+        <th>操作</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
           <td style="text-align: right"><%= link_to e.member.user_name, e.member %></td>
           <td style="text-align: right"><%= e.held_at&.strftime("%Y年%m月%d日") %></td>
           <td style="text-align: right"><%= e.price.to_s(:delimited) %>円</td>
+          <td style="text-align: right"><%= link_to "ブックマーク解除", [:unbkm, e], method: :patch, class: "button" %></td>
         </tr>
       <% end %>
     </tbody>

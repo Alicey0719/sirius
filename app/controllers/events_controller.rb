@@ -133,15 +133,15 @@ class EventsController < ApplicationController
 
     #bkm
     def bkm
-        @event = Event.find(params[:id])
-        current_member.bookmarked_events << @event
-        redirect_to @event, notice: "ブックマークに登録しました"
+        event = Event.find(params[:id])
+        current_member.bookmarked_events << event
+        redirect_back(fallback_location: root_path, notice: "ブックマークに追加しました")
     end
 
     def unbkm
         event = Event.find(params[:id])
         current_member.bookmarked_events.destroy(event)
-        redirect_to event, notice: "ブックマークを解除しました"
+        redirect_back(fallback_location: root_path, notice: "ブックマークを解除しました")
     end
 
     #StrongParams
