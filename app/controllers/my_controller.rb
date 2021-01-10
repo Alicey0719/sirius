@@ -29,9 +29,16 @@ class MyController < ApplicationController
     end
 
     def tickets
-        #!!!!!!!開催日での絞り込み未実装!!!!!!!!!!!!
-        @tickets = current_member.tickets
+        t_ids = []
+        current_member.tickets.each do |t|
+            if t.event.held_at > Date.today then
+                t_ids.push(t.id)
+            end
+        end
+        
+        @tickets = Ticket.where(id: t_ids)
             .order("created_at").page(params[:page]).per(15)
+        
     end
 
     def ticket_his
