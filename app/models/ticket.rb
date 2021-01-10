@@ -8,7 +8,7 @@ class Ticket < ApplicationRecord
     validate do
         #在庫数とチケット数
         if event.tickets.count >= event.capacity
-            errors.add(:base, :invalid)
+            errors.add(:base, :soldout)
         end
     end
     

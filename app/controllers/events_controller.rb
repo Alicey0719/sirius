@@ -108,11 +108,11 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id].to_i)
         ActiveRecord::Base.transaction do
             1.upto(ticketParams[:num].to_i) do |n|
-                t = Ticket.new(
+                @t = Ticket.new(
                     member_id: current_member.id,
                     event_id: @event.id
                 )
-                if t.save then
+                if @t.save then
                     stat = true
                 else
                     stat = false

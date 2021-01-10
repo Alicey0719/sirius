@@ -30,4 +30,21 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      member: "Member"
+      event: "Event"
+      ticket: "Ticket"
+      admin: "Admin"
+      bookmark: "Bookmark"
+      event_tag: "EventTag"
+      place_booking: "PlaceBooking"
+      place: "Place"
+      reputation: "Reputation"
+      tag: "Tag"
+    attributes:
+      ticket:
+    errors:
+      messages:
+        invalid: "Validation Error."
+        soldout: "Already sold out"
