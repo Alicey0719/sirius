@@ -103,10 +103,7 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
     end
 
-    def buy_create
-        p "=========="
-        p params[:id].to_i
-        p ticketParams[:num].to_i
+    def buy_create        
         stat = false
         @event = Event.find(params[:id].to_i)
         ActiveRecord::Base.transaction do
@@ -115,12 +112,6 @@ class EventsController < ApplicationController
                     member_id: current_member.id,
                     event_id: @event.id
                 )
-                if n ==5 then 
-                    t = Ticket.new(
-                    member_id: current_member.id,
-                    event_id: -1
-                    )
-                end
                 if t.save then
                     stat = true
                 else
