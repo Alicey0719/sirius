@@ -12,4 +12,15 @@ gnames = ["太郎", "次郎", "花子"]
     password_confirmation: "sirius"
   )
 end
+0.upto(50) do |idx|
+  Member.create(
+    user_name: "kohaku#{idx}",
+    full_name: "kohaku #{idx}",
+    email: "kohaku_#{idx}@example.com",
+    birthday: "#{rand(1980..2000)}-12-01",
+    gender: 2,
+    password: "sirius",
+    password_confirmation: "sirius"
+  )
+end
 

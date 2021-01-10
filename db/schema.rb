@@ -82,12 +82,12 @@ ActiveRecord::Schema.define(version: 2020_12_21_071603) do
   end
 
   create_table "reputations", force: :cascade do |t|
-    t.integer "liked_member_id", null: false
-    t.integer "like_member_id", null: false
+    t.integer "member_id", null: false
+    t.integer "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["like_member_id"], name: "index_reputations_on_like_member_id"
-    t.index ["liked_member_id"], name: "index_reputations_on_liked_member_id"
+    t.index ["event_id"], name: "index_reputations_on_event_id"
+    t.index ["member_id"], name: "index_reputations_on_member_id"
   end
 
   create_table "tags", force: :cascade do |t|

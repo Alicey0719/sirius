@@ -5,6 +5,8 @@ class Event < ApplicationRecord
     has_many :tags, through: :event_tags
     has_many :tickets
     has_many :buyers, through: :tickets, source: :member
+    has_many :reputations
+    has_many :like_member, through: :reputations, source: :member
     has_one :place_booking, dependent: :destroy
     has_one :place, through: :place_booking    
     belongs_to :member, foreign_key: "host_id" 
