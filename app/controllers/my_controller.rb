@@ -31,7 +31,7 @@ class MyController < ApplicationController
     def tickets
         t_ids = []
         current_member.tickets.each do |t|
-            if t.event.held_at > Date.today then
+            if t.event.held_at >= Date.today then
                 t_ids.push(t.id)
             end
         end
