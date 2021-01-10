@@ -11,8 +11,12 @@
 <%= render "shared/event_info" %>
 
 <%if current_member%>
-    <div class="buy_button">
-        <%= link_to  "購入", buy_event_path(@event) %>
+    <div class="button">
+        <% unless @event.tickets.count >= @event.capacity then %>
+            <%= link_to  "購入", buy_event_path(@event)%>
+        <%else%>
+            <p>売り切れ</p>
+        <%end%>
         <% if current_member.bookmark?(@event) %>
             <%= link_to "ブックマークに追加", [:bkm, @event], method: :patch, class: "button" %>
         <% elsif !(current_member == @event.member) %>
