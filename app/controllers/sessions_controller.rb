@@ -18,4 +18,5 @@ class SessionsController < ApplicationController
         cookies.delete(:member_id)
         redirect_to :root        
     end
+
 end

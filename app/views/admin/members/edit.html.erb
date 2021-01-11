@@ -1,0 +1,9 @@
+<% @page_title = "会員編集" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar"><%= link_to "ユーザ情報に戻る", admin_member_path(@member) %></div>
+
+<%= form_for @member, as: "update", url: admin_member_path(@member) do |form| %>
+  <%= render "admin/shared/member_form", form: form %>
+  <div><%= form.submit %></div>
+<% end %>
