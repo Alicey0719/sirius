@@ -17,7 +17,7 @@
         <%else%>
             <p>売り切れ</p>
         <%end%>
-        <%= link_to "ブックマークに追加", [:bkm, @event], method: :patch, class: "button" %>
-
+        <%= link_to "ブックマークに追加", [:bkm, @event], method: :patch, class: "button" if !(current_member.bookmarked_events.where(id:@event.id).present?) %>
+        <%= link_to "ブックマーク解除", [:unbkm, @event], method: :patch, class: "button" if (current_member.bookmarked_events.where(id:@event.id).present?) %>
     </div>
 <%end%>
