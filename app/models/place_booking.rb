@@ -5,10 +5,10 @@ class PlaceBooking < ApplicationRecord
     belongs_to :event
 
     #Validate
-    validates :event_id,
+    validates :event,
         presence: true,
         unless: -> {validation_context == :check}
-    validates :place_id,
+    validates :place,
         presence: true
     validates :start_time,
         presence: true

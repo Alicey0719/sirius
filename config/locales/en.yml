@@ -53,6 +53,7 @@ en:
       messages:
         invalid: "Validation Error."
         soldout: "Already sold out"
+        buy_time_over: "このイベントは既に終了しています"
         placetime_startend: "会場利用開始時間より終了時間を遅く設定してください"
         placetime_current_before: "会場利用時間は現在時刻より前に設定できません"
         overlap_check: "会場利用期間が他イベントと重複しています"

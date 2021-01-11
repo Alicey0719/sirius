@@ -5,9 +5,17 @@ class Bookmark < ApplicationRecord
     belongs_to :member
 
     #Validates
-    validates :event_id,
+    validates :event,
         presence: true
-    validates :member_id,
+    validates :member,
         presence: true
+    validate :user_check
+    
+    #Method
+    private def user_check
+        if self.member == self.event.member then
+            errors.add(:base, :reputation_user_check)
+        end
+    end
 
 end

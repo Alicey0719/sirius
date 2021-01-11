@@ -3,7 +3,7 @@ class Event < ApplicationRecord
     #Association
     has_many :event_tags
     has_many :tags, through: :event_tags
-    has_many :tickets
+    has_many :tickets, dependent: :destroy
     has_many :buyers, through: :tickets, source: :member
     has_many :reputations
     has_many :like_member, through: :reputations, source: :member

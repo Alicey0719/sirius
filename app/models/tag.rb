@@ -7,7 +7,7 @@ class Tag < ApplicationRecord
     #Validates
     validates :name,
         presence: true,
-        length: {minimum: 2, maximum: 15}
-
+        length: {minimum: 2, maximum: 15},
+        uniqueness: true
     
 end

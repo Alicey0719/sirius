@@ -5,9 +5,10 @@ class EventTag < ApplicationRecord
     belongs_to :tag
 
     #Validates
-    validates :event_id,
+    validates :event,
         presence: true
-    validates :tag_id,
-        presence: true
+    validates :tag,
+        presence: true,
+        uniqueness: { scope: :event }
 
 end

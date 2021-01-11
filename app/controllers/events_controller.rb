@@ -40,7 +40,8 @@ class EventsController < ApplicationController
     end
 
     def index
-        @events = Event.order("held_at")
+        @events = Event.where("held_at >= ?",Date.today)
+            .order("held_at")
             .page(params[:page]).per(15)
     end
 
@@ -48,10 +49,14 @@ class EventsController < ApplicationController
         @tags = Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
         if tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i}.present? then
             @events = Event.search(params[:sword])
+                .where("held_at >= ?",Date.today)
                 .where(tags:tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
+                .order("held_at")
                 .page(params[:page]).per(15)
         else
             @events = Event.search(params[:sword])
+                .where("held_at >= ?",Date.today)
+                .order("held_at")
                 .page(params[:page]).per(15)
         end
         render "index"
@@ -75,8 +80,6 @@ class EventsController < ApplicationController
                 redirect_to :new_1_events and return
             end
         end      
-        
-        p @event.tags
 
         if @event.save then            
             @event.tags = Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
