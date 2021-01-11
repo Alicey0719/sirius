@@ -3,10 +3,10 @@ class Member < ApplicationRecord
     has_secure_password
 
     #Association
-    has_many :events, foreign_key: "host_id"
-    has_many :bookmarks
+    has_many :events, foreign_key: "host_id", dependent: :destroy
+    has_many :bookmarks, dependent: :destroy
     has_many :bookmarked_events, through: :bookmarks, source: :event
-    has_many :tickets
+    has_many :tickets, dependent: :destroy
     has_many :reputations
     has_many :liked_events, through: :reputations, source: :event
     has_many :liked_event_hosts, through: :liked_events, source: :member
