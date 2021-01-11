@@ -1,6 +1,12 @@
 module ApplicationHelper
     def page_title
-        title = "Sirius_AdminTool"
+        title = "Sirius"
+        title = title + " | " + @page_title if @page_title
+        title
+    end
+
+    def admin_page_title
+        title = "Sirius_AdminTools"
         title = title + " | " + @page_title if @page_title
         title
     end

@@ -34,14 +34,16 @@ Rails.application.routes.draw do
     get :bkm
   end
 
-  resource :admin do
-    get "login" => "admins#login", as: "login"
+  namespace :admin do
+    root "admin#top"
+    get "login" => "admin#login", as: "login"
     post "login" => "sessions#admin_login"
     post "logout" => "sessions#admin_logout", as: "logout"
-    get "top"
+    get "top" => "admin#top"
     resources :members, except: [:create, :new]
     resources :events, except: [:create, :new]
     resources :places
+    resources :tags
   end
 
 end

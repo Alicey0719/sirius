@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= page_title %></title>
+    <title><%= admin_page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,7 @@
   <body>
     <div id="container">
       <header>
-        <%= render "admins/shared/header" %>
+        <%= render "admin/shared/header" %>
       </header>
       <main>
         <% if flash.notice %>
@@ -22,7 +22,7 @@
         <%= yield %>
       </main>
       <footer>
-        <%= render "admins/shared/footer" %>
+        <%= render "admin/shared/footer" %>
       </footer>
     </div>
   </body>

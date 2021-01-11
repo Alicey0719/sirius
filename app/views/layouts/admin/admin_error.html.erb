@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><%= page_title %></title>
+    <title><%= admin_page_title %></title>
     <%= stylesheet_link_tag "admin", media: "all" %>
   </head>
   <body>
     <div id="container">
       <header>
         
-        <%= render "admins/shared/header" %>
+        <%= render "admin/shared/header" %>
         
       </header>
       <main>
         <%= yield %>
       </main>
       <footer>
-        <%= render "admins/shared/footer" %>
+        <%= render "admin/shared/footer" %>
       </footer>
     </div>
   </body>
