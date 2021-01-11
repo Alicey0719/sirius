@@ -19,4 +19,21 @@
     <th>メールアドレス</th>
     <td><%= @member.email %></td>
   </tr>
+  <tr>
+    <th>会員ランク</th>
+    <td>
+      <% rank = member_rank(member_reputation(@member)) %>
+      <%= if rank >3 then
+                  "PLATINUM"
+              elsif rank >2 then
+                  "GOLD"
+              elsif rank >1 then
+                  "SILVER"
+              elsif rank >0 then
+                  "BRONZE"
+              else
+                  "STANDARD"
+              end%>
+      </td>
+  </tr>
 </table>

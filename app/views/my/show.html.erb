@@ -2,6 +2,22 @@
 
 <h1><%= @page_title %></h1>
 
+<div class="rank">
+    <p>あなたの会員ランクは
+        <%= if @rank >3 then
+                "PLATINUM"
+            elsif @rank >2 then
+                "GOLD"
+            elsif @rank >1 then
+                "SILVER"
+            elsif @rank >0 then
+                "BRONZE"
+            else
+                "STANDARD"
+            end%>
+    です</p>
+</div>
+
 <ul>
     <li> <%= link_to "ブックマーク", :bkm_my %> </li>
     <li> <%= link_to "保有チケット", :tickets_my %> </li>

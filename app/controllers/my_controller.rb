@@ -3,6 +3,7 @@ class MyController < ApplicationController
     before_action :login_required
 
     def show
+        @rank = member_rank(member_reputation(current_member))        
     end
 
     def info

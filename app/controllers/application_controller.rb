@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
 
+    #Define
+    PLATINUM = 30
+    GOLD = 20
+    SILVER = 10
+    BRONZE = 5
+    STANDARD = 0
+
     #currentUserMethod
     private def current_member
         #Member.find_by(id: session[:member_id]) if session[:member_id]
@@ -12,6 +19,36 @@ class ApplicationController < ActionController::Base
         Admin.find_by(id: cookies.signed[:admin_id]) if cookies.signed[:admin_id]
     end
     helper_method :current_admin
+
+    #Method
+    private def member_reputation(member)
+        rank = 0
+        begin
+            member.events.each do |e|
+                rank += e.reputations.count
+            end
+        rescue => error
+        end
+        return rank
+    end
+    helper_method :member_reputation
+
+    private def member_rank(member_rep)
+        v = 0
+        if member_rep < BRONZE then
+            v = 0
+        elsif member_rep < SILVER then
+            v = 1
+        elsif member_rep < GOLD then
+            v = 2
+        elsif member_rep < PLATINUM then
+            v = 3
+        elsif member_rep >= PLATINUM then
+            v = 4
+        end
+        return v
+    end
+    helper_method :member_rank
 
     #login
     class LoginRequired < StandardError; end
