@@ -43,7 +43,12 @@ en:
       reputation: "Reputation"
       tag: "Tag"
     attributes:
-      ticket:
+      member:
+        user_name: "User Name"
+        full_name: "Full Name"
+        gender_1: "Man"
+        gender_2: "Woman"
+        gender_3: "Other"
     errors:
       messages:
         invalid: "Validation Error."

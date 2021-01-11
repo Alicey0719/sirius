@@ -9,7 +9,9 @@
   </tr>
   <tr>
     <th>性別</th>
-    <td><%= @member.gender %></td>
+    <td><%= @member.gender == 1 ? "Man" :
+            @member.gender == 2 ? "Woman" : "Other"  
+        %></td>
   </tr>
   <tr>
     <th>誕生日</th>
