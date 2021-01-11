@@ -142,15 +142,40 @@ class EventsController < ApplicationController
 
     #bkm
     def bkm
-        event = Event.find(params[:id])
-        current_member.bookmarked_events << event
-        redirect_back(fallback_location: root_path, notice: "ブックマークに追加しました")
+        begin
+            event = Event.find(params[:id])
+            current_member.bookmarked_events << event
+            redirect_back(fallback_location: root_path, notice: "ブックマークに追加しました")
+        rescue => error 
+        end
     end
 
     def unbkm
-        event = Event.find(params[:id])
-        current_member.bookmarked_events.destroy(event)
-        redirect_back(fallback_location: root_path, notice: "ブックマークを解除しました")
+        begin
+            event = Event.find(params[:id])
+            current_member.bookmarked_events.destroy(event)
+            redirect_back(fallback_location: root_path, notice: "ブックマークを解除しました")
+        rescue => error 
+        end
+    end
+
+    #reputation
+    def like
+        begin
+            event = Event.find(params[:id])
+            current_member.liked_events << event
+            redirect_back(fallback_location: root_path, notice: "高評価しました")
+        rescue => error 
+        end
+    end
+    
+    def unlike
+        begin
+            event = Event.find(params[:id])
+            current_member.liked_events.destroy(event)
+            redirect_back(fallback_location: root_path, notice: "高評価取り消ししました")
+        rescue => error 
+        end
     end
 
     #StrongParams
