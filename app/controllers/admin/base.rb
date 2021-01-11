@@ -24,23 +24,23 @@ class Admin::Base < ApplicationController
     class Forbidden < StandardError; end
 
     private def rescue_bad_request(exception)
-        render "errors/bad_request", status: 400, layout: "admin_error", formats: [:html]
+        render "admin/errors/bad_request", status: 400, layout: "admin/admin_error", formats: [:html]
     end
 
     private def rescue_login_required(exception)
-        render "errors/login_required", status: 403, layout: "admin_error", formats: [:html]
+        render "admin/errors/login_required", status: 403, layout: "admin/admin_error", formats: [:html]
     end
 
     private def rescue_forbidden(exception)
-        render "errors/forbidden", status: 403, layout: "admin_error", formats: [:html]
+        render "admin/errors/forbidden", status: 403, layout: "admin/admin_error", formats: [:html]
     end
 
     private def rescue_not_found(exception)
-        render "errors/not_found", status: 404, layout: "admin_error", formats: [:html]
+        render "admin/errors/not_found", status: 404, layout: "admin/admin_error", formats: [:html]
     end
 
     private def rescue_internal_server_error(exception)
-        render "errors/internal_server_error", status: 500, layout: "admin_error", formats: [:html]
+        render "admin/errors/internal_server_error", status: 500, layout: "admin/admin_error", formats: [:html]
     end
 
 end
