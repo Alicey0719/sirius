@@ -9,7 +9,8 @@ class EventsController < ApplicationController
         @event = Event.new(held_at: Date.today.next)
         @event.member = current_member  
 
-        @places = Place.all.readonly #ランク制限未実装
+        member_rank = member_rank(member_reputation(current_member))
+        @places = Place.where("rank <= ?", member_rank).readonly
 
         @event.place_booking = PlaceBooking.new(
             start_time: Time.now,

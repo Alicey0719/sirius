@@ -17,6 +17,7 @@ class PlaceBooking < ApplicationRecord
     validate :start_end_check
     validate :current_before
     validate :overlap_check
+    validate :rank_check
 
     #Method
     def start_end_check
@@ -32,6 +33,13 @@ class PlaceBooking < ApplicationRecord
     def overlap_check
         if PlaceBooking.where('end_time > ? and ? > start_time', self.start_time, self.end_time).present? then
             errors.add(:base, :overlap_check)
+        end
+    end
+
+    def rank_check
+        mrank = member_rank(member_reputation(self.event.member))
+        unless self.place.rank <= mrank then
+            errors.add(:base, :rank_check)
         end
     end
 
