@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   end
 
   resource :admin do
-    get "login" => "admin#login", as: "login"
+    get "login" => "admins#login", as: "login"
     post "login" => "sessions#admin_login"
     post "logout" => "sessions#admin_logout", as: "logout"
     get "top"

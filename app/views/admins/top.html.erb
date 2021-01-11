@@ -1,0 +1,6 @@
+<% @page_title = "AdminTop" %>
+<h1><%= @page_title %></h1>
+
+<ul>
+    <li> <%= link_to "ログアウト", :logout_admin, method: :post, data: { confirm: "ログアウトしますか?" } %> </li>
+</ul>

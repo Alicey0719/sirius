@@ -1,0 +1,13 @@
+<nav class="navi">
+  <ul>
+    <%= image_tag "logo.png", size: "150x52", alt: "logo" %>
+    
+    <% if current_admin then %>
+        <%= menu_link_to "AdminTop", :top_admin %>
+        <%= menu_link_to "ログアウト", :logout_admin, method: :post, data: { confirm: "ログアウトしますか?" } %>
+        <%=content_tag(:li) do 
+          content_tag(:p, "#{current_admin.user_name}さん") 
+        end%>
+    <%end%>
+  </ul>
+</nav>

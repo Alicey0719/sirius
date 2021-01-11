@@ -1,0 +1,70 @@
+/*全体*/
+
+body {
+    background-color: #999999;
+}
+
+
+/*navi*/
+
+.navi ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #366819;
+    /*Safari対応*/
+    height: 52px;
+}
+
+.navi ul li {
+    float: left;
+    border-right: 1px solid #bbbbbb;
+    width: 140px;
+    /*Safari対応*/
+    height: 52px;
+}
+
+.navi ul li:last-child {
+    margin-left: auto;
+}
+
+.navi ul li a {
+    /* リンク時 */
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    /*Safari対応*/
+    height: 52px;
+}
+
+.navi ul li p {
+    /* text */
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0px;
+    /*Safari対応*/
+    height: 52px;
+}
+
+.navi ul li span {
+    /* 現ページ */
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #368b04;
+    /*Safari対応*/
+    height: 52px;
+}
+
+.navi ul li a:hover {
+    background-color: #22460d;
+}
