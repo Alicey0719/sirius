@@ -1,0 +1,35 @@
+<%= render "admin/shared/errors", obj: @place %>
+
+<table class="attr">
+    <% if @place.id.present? %>
+        <tr>
+            <th><%= form.label :id %></th>
+            <td><%= @place.id %></td>
+        </tr>
+    <%end%>
+    <tr>
+        <th><%= form.label :name %></th>
+        <td><%= form.text_field :name %></td>
+    </tr>
+
+    <tr>
+        <th><%= form.label :address %></th>
+        <td><%= form.text_field :address %></td>
+    </tr>
+
+    <tr>
+        <th><%= form.label :capacity %></th>
+        <td><%= form.number_field :capacity %></td>
+    </tr>
+
+    <tr>
+        <th><%= form.label :rank %></th>
+        <td><%= form.number_field :rank, {min:0, max:4} %></td>
+    </tr>
+
+</table>
+
+<div><%= form.submit %></div>
+
+
+

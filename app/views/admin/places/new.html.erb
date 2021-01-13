@@ -1,0 +1,8 @@
+<% @page_title = "会場登録" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar"><%= link_to "戻る", :back %></div>
+
+<%= form_for @place, as: "place", url: admin_places_path do |form| %>
+    <%= render "place_form", form: form %>
+<% end %>

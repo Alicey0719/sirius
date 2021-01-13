@@ -1,5 +1,7 @@
 class Admin::MembersController < Admin::Base
 
+    before_action :admin_login_required
+
     def index
         @members = Member.all
             .order("id")

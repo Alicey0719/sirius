@@ -1,0 +1,10 @@
+<% @page_title = "会場詳細" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar">
+    <%= link_to "一覧へ戻る", admin_places_path %>
+    <%= link_to "編集", edit_admin_place_path(@place)%>
+    <%= link_to "削除", admin_place_path(@place), method: :delete, data: { confirm: "本当に削除しますか?" }  %>
+</div>
+<%= render "admin/shared/place_info" %>
+
