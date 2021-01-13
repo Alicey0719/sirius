@@ -142,6 +142,17 @@ input[type='text'] {
     -moz-appearance: none;
 }
 
+input[type='password'] {
+    width: 100%;
+    max-width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 
 /*check*/
 
@@ -191,7 +202,7 @@ input[type='text'] {
 
 /*submit*/
 
-input[name="commit"] {
+input[type="submit"] {
     border: none;
     display: block;
     width: 100%;
@@ -208,7 +219,7 @@ input[name="commit"] {
     margin: 0 auto;
 }
 
-.search input[name="commit"] {
+.search input[type="submit"] {
     border: none;
     display: inline;
     width: 50px;
@@ -220,6 +231,23 @@ input[name="commit"] {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    margin: 0 auto;
+}
+
+#login-form input[type="submit"] {
+    text-align: center;
+    border: none;
+    display: inline;
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
     margin: 0 auto;
 }
 
