@@ -1,7 +1,210 @@
 /*全体*/
 
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #cbd9f8;
+}
+
+
+/* Main */
+
+main {
+    margin: 20px auto;
+    width: 70%;
+    max-width: 850px;
+}
+
+.tags {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#sword {
+    width: 500px;
+    height: 30px;
+    font-size: 18px;
+}
+
+.list {
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.list tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+}
+
+.list tr:hover {
+    background-color: #bacefa;
+}
+
+.list th,
+.list td {
+    text-align: center;
+    width: 25%;
+    padding: 15px 0;
+}
+
+.search {
+    text-align: center;
+}
+
+
+/*form*/
+
+
+/*text*/
+
+input[type='text'] {
+    width: 100%;
+    max-width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.search input[type='text'] {
+    width: 100%;
+    max-width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+/*check*/
+
+.checkbox-wrap label {
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.checkbox-wrap input {
+    display: none;
+}
+
+.checkbox-wrap input+span {
+    padding-left: 22px;
+    position: relative;
+}
+
+.checkbox-wrap input+span::before {
+    content: "";
+    background-image: url(../img/check.png);
+    background-size: contain;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox-wrap input:checked+span {
+    color: #487cff;
+    font-weight: bold;
+}
+
+.checkbox-wrap input:checked+span::after {
+    content: "";
+    background-image: url(../img/check-checked.png);
+    background-size: contain;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+}
+
+
+/*submit*/
+
+input[name="commit"] {
+    border: none;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.search input[name="commit"] {
+    border: none;
+    display: inline;
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0 auto;
+}
+
+
+/*select*/
+
+select:before {
+    position: static;
+    height: 15px;
+}
+
+select {
+    outline: none;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+/*textarea*/
+
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input[type="number"] {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 
