@@ -15,11 +15,11 @@
     <tbody>
       <% @events.each do |e| %>
         <tr>
-          <td style="text-align: right"><%= link_to e.name, e %></td>
-          <td style="text-align: right"><%= link_to e.member.user_name, e.member %></td>
-          <td style="text-align: right"><%= e.held_at&.strftime("%Y年%m月%d日") %></td>
-          <td style="text-align: right"><%= e.price.to_s(:delimited) %>円</td>
-          <td style="text-align: right"><%= link_to "ブックマーク解除", [:unbkm, e], method: :patch, class: "button" %></td>
+          <td><%= link_to e.name, e %></td>
+          <td><%= link_to e.member.user_name, e.member %></td>
+          <td><%= e.held_at&.strftime("%Y年%m月%d日") %></td>
+          <td><%= e.price.to_s(:delimited) %>円</td>
+          <td><%= link_to "ブックマーク解除", [:unbkm, e], method: :patch %></td>
         </tr>
       <% end %>
     </tbody>
