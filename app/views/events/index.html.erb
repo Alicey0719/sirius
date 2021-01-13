@@ -5,21 +5,23 @@
 <%= form_tag :search_events, method: :get, class: "search" do %>
   <%= text_field_tag "sword", params[:sword] %>
   <%= submit_tag "検索" %>
+
+    <div class="tags">
+      <%= fields_for :tagData do |t| %>
+        <%if @tags.present? then%>
+          <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name,{checked:@tags.map(&:to_param)}) do |cb| 
+            cb.label { cb.check_box + cb.text }
+          end%>
+        <%else%>
+          <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name,{checked: false}) do |cb| 
+            cb.label { cb.check_box + cb.text }
+          end%>
+        <%end%>
+      <%end%>
+    </div>  
 <% end %>
 
-<div class="tags">
-  <%= fields_for :tagData do |t| %>
-    <%if @tags.present? then%>
-      <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name,{checked:@tags.map(&:to_param)}) do |cb| 
-        cb.label { cb.check_box + cb.text }
-      end%>
-    <%else%>
-      <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name,{checked: false}) do |cb| 
-        cb.label { cb.check_box + cb.text }
-      end%>
-    <%end%>
-  <%end%>
-</div>
+
 
 <% if @events.present? %>
   <table class="list">
