@@ -271,3 +271,16 @@ input[type="number"] {
 .navi ul li a:hover {
     background-color: #3c4a64;
 }
+
+
+/*Top*/
+
+#slider {
+    margin: 0 auto;
+    width: 80%;
+}
+
+#slider img {
+    border-radius: 30px;
+    filter: sepia(50%);
+}

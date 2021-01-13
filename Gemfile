@@ -74,6 +74,9 @@ gem 'date_validator', '~> 0.10.0'
 gem 'kaminari'
 gem 'kaminari-i18n'
 
+#jquery
+gem 'jquery-rails'
+
 # debug
 gem 'whiny_validation'
 
