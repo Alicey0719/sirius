@@ -1,0 +1,53 @@
+<% @page_title = "'#{@event.name}'の編集" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar">
+    <%= link_to "戻る", :back %>
+</div>
+
+<%= form_for @event, as: "event", url: admin_event_path(@event) do |form| %>
+    <%= render "admin/shared/errors", obj: @event %>
+
+    <table class="attr">
+        <tr>
+            <th>イベント名</th>
+            <td><%= form.text_field :name %></td>
+        </tr>
+        <tr>
+            <th>開催者</th>
+            <td><%= @event.member.full_name %></td>
+        </tr>
+        <tr>
+            <th>開催日</th>
+            <td><%= @event.held_at&.strftime("%Y年%m月%d日") %></td>
+        </tr>
+        <tr>
+            <th>価格</th>
+            <td><%= @event.price.to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+            <th>限定数</th>
+            <td><%= @event.capacity.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+            <th>詳細</th>
+            <td><%= form.text_area :detail, {
+                size: '50x20',
+                maxlength: 1500,
+                placeholder: "・イベントの概要\n・詳細スケジュール\n・物販情報\n等をお書きください."
+                } %></td>
+        </tr>
+        <tr>
+            <th>タグ</th>
+            <td><%= fields_for :tagData do |t| %>
+                <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name,{checked:@event.tags.map(&:to_param)}) do |cb| 
+                        cb.label { cb.check_box + cb.text }
+                    end%>
+                <%end%>
+            </td>
+        </tr>
+
+
+    </table>
+    <div><%= form.submit "更新", data: { confirm: "本当に更新しますか?" } %></div>
+<%end%>

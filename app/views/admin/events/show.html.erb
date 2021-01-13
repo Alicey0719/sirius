@@ -1,0 +1,10 @@
+<% @page_title = "'#{@event.name}'の詳細" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar">
+    <%= link_to "一覧へ戻る", admin_events_path %>
+    <%= link_to "編集", edit_admin_event_path(@event)%>
+    <%= link_to "削除", admin_event_path(@event), method: :delete, data: { confirm: "本当に削除しますか?" }  %>
+</div>
+
+<%= render "event_info" %>

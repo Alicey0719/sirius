@@ -1,0 +1,43 @@
+<table class="attr">
+  <tr>
+    <th>イベント名</th>
+    <td><%= @event.name %></td>
+  </tr>
+  <tr>
+    <th>主催者</th>
+    <td><%= link_to @event.member.user_name, admin_member_path(@event.member) %> | <%=@event.member.full_name%></td>
+  </tr>
+  <tr>
+    <th>開催日</th>
+    <td><%= @event.held_at&.strftime("%Y年%m月%d日") %></td>
+  </tr>
+  <tr>
+    <th>場所</th>
+    <% if @event.place_booking then %>
+      <td><%= @event.place_booking.place.name %></td>
+    <%else%>
+      <td>詳細をご確認ください</td>
+    <%end%>
+  </tr>  
+  <tr>
+    <th>価格</th>
+    <td><%= @event.price.to_s(:delimited) %>円</td>
+  </tr>
+  <tr>
+    <th>限定数</th>
+    <td><%= @event.capacity.to_s(:delimited) %></td>
+  </tr>
+  <tr>
+    <th>詳細</th>
+    <td><%= simple_format(@event.detail) %></td>
+  </tr>
+  <tr>
+    <th>タグ</th>
+    <td>
+      <% @event.tags.each.with_index(1) do |t, c| %>
+        <%= t.name %>
+        <%= p ", " if @event.tags.count > c  %>
+      <%end%>          
+    </td>
+  </tr>
+</table>
