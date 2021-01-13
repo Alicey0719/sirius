@@ -1,0 +1,28 @@
+<% @page_title = "イベントタグ管理" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar">
+    <%= link_to "新規登録", new_admin_tag_path %>
+</div>
+
+<% if @tags.present? %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>タグ名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tags.each do |t| %>
+        <tr>
+          <td style="text-align: right"><%= t.id %></td>
+          <td style="text-align: right"><%= link_to t.name, admin_tag_path(t) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @tags %>
+<% else %>
+  <p>タグが見つかりませんでした。</p>
+<% end %>

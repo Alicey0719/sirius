@@ -1,0 +1,17 @@
+<%= render "admin/shared/errors", obj: @tag %>
+
+<table class="attr">
+    <% if @tag.id.present? %>
+        <tr>
+            <th><%= form.label :id %></th>
+            <td><%= @tag.id %></td>
+        </tr>
+    <%end%>
+    <tr>
+        <th><%= form.label :name %></th>
+        <td><%= form.text_field :name, {maxlength: 15} %></td>
+    </tr>  
+
+</table>
+
+<div><%= form.submit %></div>

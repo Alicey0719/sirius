@@ -1,0 +1,8 @@
+<% @page_title = "タグ編集" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar"><%= link_to "タグ情報に戻る", admin_tag_path(@tag) %></div>
+
+<%= form_for @tag, as: "tag", url: admin_tag_path(@tag) do |form| %>
+    <%= render "tag_form", form: form %>
+<% end %>
