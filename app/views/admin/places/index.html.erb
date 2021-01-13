@@ -18,10 +18,10 @@
     <tbody>
       <% @places.each do |p| %>
         <tr>
-          <td style="text-align: right"><%= p.id %></td>
-          <td style="text-align: right"><%= link_to p.name, admin_place_path(p) %></td>
-          <td style="text-align: right"><%= p.address %></td>
-          <td style="text-align: right"><%= p.capacity %></td>
+          <td><%= p.id %></td>
+          <td><%= link_to p.name, admin_place_path(p) %></td>
+          <td><%= p.address %></td>
+          <td><%= p.capacity %></td>
         </tr>
       <% end %>
     </tbody>

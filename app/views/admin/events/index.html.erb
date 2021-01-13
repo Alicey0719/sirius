@@ -15,11 +15,11 @@
     <tbody>
       <% @events.each do |e| %>
         <tr>
-        <td style="text-align: right"><%= e.id %></td>
-          <td style="text-align: right"><%= link_to e.name, admin_event_path(e) %></td>
-          <td style="text-align: right"><%= link_to e.member.user_name, admin_member_path(e.member) %>|<%=e.member.full_name%></td>
-          <td style="text-align: right"><%= e.held_at&.strftime("%Y年%m月%d日") %></td>
-          <td style="text-align: right"><%= e.price.to_s(:delimited) %>円</td>
+        <td><%= e.id %></td>
+          <td><%= link_to e.name, admin_event_path(e) %></td>
+          <td><%= link_to e.member.user_name, admin_member_path(e.member) %>|<%=e.member.full_name%></td>
+          <td><%= e.held_at&.strftime("%Y年%m月%d日") %></td>
+          <td><%= e.price.to_s(:delimited) %>円</td>
         </tr>
       <% end %>
     </tbody>

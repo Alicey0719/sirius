@@ -16,8 +16,8 @@
     <tbody>
       <% @tags.each do |t| %>
         <tr>
-          <td style="text-align: right"><%= t.id %></td>
-          <td style="text-align: right"><%= link_to t.name, admin_tag_path(t) %></td>
+          <td><%= t.id %></td>
+          <td><%= link_to t.name, admin_tag_path(t) %></td>
         </tr>
       <% end %>
     </tbody>
