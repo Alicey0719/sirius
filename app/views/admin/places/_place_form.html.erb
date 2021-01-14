@@ -19,7 +19,7 @@
 
     <tr>
         <th><%= form.label :capacity %></th>
-        <td><%= form.number_field :capacity %></td>
+        <td><%= form.number_field :capacity, {min:1, max:99999} %></td>
     </tr>
 
     <tr>

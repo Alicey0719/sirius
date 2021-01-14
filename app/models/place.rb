@@ -12,9 +12,9 @@ class Place < ApplicationRecord
         length: { maximum: 50}
     validates :capacity,
         presence: true,
-        length: { maximum: 99999}
+        numericality:{less_than_or_equal_to: 99999, greater_than:0 }
     validates :rank,
         presence: true,
-        length: { minimum:0 ,maximum: 100}
+        numericality: { greater_than:0 ,less_than_or_equal_to: 100}
 
 end
