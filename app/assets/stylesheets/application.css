@@ -415,3 +415,13 @@ input[type="number"] {
     border-radius: 30px;
     filter: sepia(50%);
 }
+
+.slick-next {
+    right: 10px !important;
+    z-index: 100;
+}
+
+.slick-prev {
+    left: 10px !important;
+    z-index: 100;
+}
