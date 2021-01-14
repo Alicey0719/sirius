@@ -59,7 +59,7 @@ a {
 .list th,
 .list td {
     text-align: center;
-    width: 18%;
+    width: auto;
     padding: 15px 0;
 }
 

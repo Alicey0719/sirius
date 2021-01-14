@@ -36,14 +36,27 @@ class MyController < ApplicationController
                 t_ids.push(t.id)
             end
         end
+
+        nt = current_member.tickets.where(id: t_ids).select(:event_id).distinct
+        t_ids = []
+        nt.each do |t|
+            t_ids.push(current_member.tickets.where(event_id:t.event_id).last.id)
+        end
         
-        @tickets = Ticket.where(id: t_ids)
+        @tickets = current_member.tickets.where(id:t_ids)
             .order("created_at").page(params[:page]).per(15)
         
     end
 
     def ticket_his
-        @tickets = current_member.tickets
+
+        nt = current_member.tickets.select(:event_id).distinct
+        t_ids = []
+        nt.each do |t|
+            t_ids.push(current_member.tickets.where(event_id:t.event_id).last.id)
+        end
+
+        @tickets = current_member.tickets.where(id:t_ids)
             .order("created_at").page(params[:page]).per(15)
     end
 
