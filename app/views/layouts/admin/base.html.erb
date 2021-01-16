@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   </head>
 
   <body>
@@ -25,5 +27,7 @@
         <%= render "admin/shared/footer" %>
       </footer>
     </div>
+
+    <div id="page_top"><a href="#"><i class="fa fa-chevron-up"></i></a></div>
   </body>
 </html>

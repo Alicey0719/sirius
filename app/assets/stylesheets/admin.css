@@ -402,3 +402,36 @@ input[type="number"] {
 .navi ul li a:hover {
     background-color: #22460d;
 }
+
+
+/* PageTop */
+
+#page_top {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+}
+
+#page_top i {
+    padding-top: 7px;
+    padding-right: 7px;
+}
+
+#page_top a {
+    display: block;
+    z-index: 999;
+    padding: 10px 0 0 10px;
+    border-radius: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: #368b04;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+#page_top a:hover {
+    text-decoration: none;
+    opacity: 0.7;
+}
