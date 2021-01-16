@@ -1,0 +1,21 @@
+<% @page_title = "アカウント情報編集" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar"><%= link_to "アカウント情報に戻る", :admin_info %></div>
+
+<%= form_for @admin, as: "admin", url: admin_update_path(@admin) do |form| %>
+    <%= render "admin/shared/errors", obj: @admin %>
+
+    <table class="attr">    
+        <tr>
+            <th><%= form.label :user_name %></th>
+            <td><%= form.text_field :user_name %></td>
+        </tr>
+        <tr>
+            <th><%= form.label :full_name %></th>
+            <td><%= form.text_field :full_name %></td>
+        </tr>
+    </table>
+
+    <div><%= form.submit %></div>
+<% end %>

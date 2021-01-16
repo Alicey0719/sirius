@@ -40,6 +40,10 @@ Rails.application.routes.draw do
     post "login" => "sessions#admin_login"
     post "logout" => "sessions#admin_logout", as: "logout"
     get "top" => "admin#top"
+    get "info" => "admin#info"
+    get "edit" => "admin#edit"
+    patch "update" => "admin#update"
+    resource :password, only: [:edit, :update]
     resources :members, except: [:create, :new]
     resources :events, except: [:create, :new]
     resources :places

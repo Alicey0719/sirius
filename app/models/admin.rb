@@ -3,6 +3,7 @@ class Admin < ApplicationRecord
     has_secure_password
 
     #Validates
+    attr_accessor :current_password
     validates :user_name,
         presence: true,
         format: {with: /\A[A-Za-z][A-Za-z0-9]*\z/, allow_blank: true},
@@ -12,9 +13,8 @@ class Admin < ApplicationRecord
         presence: true,
         length: {maximum: 20}
     validates :password,
-        presence: true,
-        length: {minimum: 4, maximum: 32},
-        format: {with: /\A[A-Za-z0-9]*\z/}
-
+        presence: {if: :current_password},
+        length: {minimum: 4, maximum: 32, allow_blank: true},
+        format: {with: /\A[A-Za-z0-9]*\z/, allow_blank: true}
 
 end

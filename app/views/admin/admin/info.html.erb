@@ -1,0 +1,23 @@
+<% @page_title = "アカウント情報" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar">
+    <%= link_to "Topに戻る", :admin_root %>
+    <%= link_to "編集", :admin_edit %>
+    <%= link_to "パスワード変更", :edit_admin_password %>
+</div>
+
+<table class="attr">
+  <tr>
+    <th>ID</th>
+    <td><%= @admin.id %></td>
+  </tr>
+  <tr>
+    <th>ユーザー名</th>
+    <td><%= @admin.user_name %></td>
+  </tr>
+  <tr>
+    <th>氏名</th>
+    <td><%= @admin.full_name %></td>
+  </tr>
+</table>
