@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     before_action :login_required, except: [:index, :search, :show]
-    before_action :edit_member, only: [:edit, :update]
+    before_action :edit_member, only: [:edit, :update, :destroy]
 
     #StdAction
     def new_1
