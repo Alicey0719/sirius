@@ -406,6 +406,12 @@ input[type="number"] {
 
 /*Top*/
 
+img {
+    /*画像読み込み遅延, Safari対策*/
+    max-width: 100%;
+    height: auto;
+}
+
 #slider {
     margin: 0 auto;
     width: 80%;
