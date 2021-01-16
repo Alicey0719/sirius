@@ -1,5 +1,7 @@
 class Admin::EventsController < Admin::Base
 
+    before_action :admin_login_required
+
     #Action
     def index
         @events = Event.all

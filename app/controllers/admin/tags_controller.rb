@@ -1,5 +1,7 @@
 class Admin::TagsController < Admin::Base
 
+    before_action :admin_login_required
+
     #Action
     def index
         @tags = Tag.all
