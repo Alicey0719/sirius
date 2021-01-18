@@ -500,3 +500,21 @@ p.notice {
     padding: 3px;
     background-color: rgb(176, 216, 253);
 }
+
+
+/*footer*/
+
+footer {
+    margin-top: 100px;
+    display: block;
+    clear: both;
+    padding: 20px 0;
+    overflow: hidden;
+    background: #415ca2;
+    min-height: 100px;
+}
+
+footer p {
+    text-align: center;
+    color: #eee;
+}
