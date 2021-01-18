@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title><%= page_title %></title>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "application", media: "all" %>
   </head>
   <body>
@@ -15,7 +16,7 @@
       <main>
         <%= yield %>
       </main>
-      <footer>
+      <footer id="footer">
         <%= render "shared/footer" %>
       </footer>
     </div>

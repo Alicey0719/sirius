@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title><%= admin_page_title %></title>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "admin", media: "all" %>
   </head>
   <body>
@@ -15,7 +16,7 @@
       <main>
         <%= yield %>
       </main>
-      <footer>
+      <footer id="footer">
         <%= render "admin/shared/footer" %>
       </footer>
     </div>
