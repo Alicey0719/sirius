@@ -19,7 +19,8 @@ class Event < ApplicationRecord
         length: {maximum: 20}
     validates :held_at,
         presence: true,
-        date: {after: Proc.new{Time.now}}
+        date: {after: Proc.new{Time.now}},
+        if: :new_or_held_at_changed
     validates :capacity,
         presence: true
     validates :price,
@@ -38,5 +39,9 @@ class Event < ApplicationRecord
             return rel
         end
     end    
+
+    def new_or_held_at_changed
+        held_at.present? && (new_record? || will_save_change_to_held_at?)
+    end
 
 end
