@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
     def index
         @places = Place.all
             .order("id")
-            .page(params[:page]).per(50)
+            .page(params[:page]).per(15)
     end
 
     def show
