@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :members, only: [:show]
+  resources :places, only: [:index, :show]
 
   resource :account, only: [:new, :create, :destroy]
   resource :password, only: [:edit, :update]

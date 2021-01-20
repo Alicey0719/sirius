@@ -4,6 +4,7 @@
     <%= menu_link_to "Top", :root %>
     <%= menu_link_to "Search", :events %>
     <%= menu_link_to "Create", :new_1_events if current_member %>
+    <%= menu_link_to "Place", :places if current_member %>
     <%= menu_link_to "MyPage", :my if current_member %>
     <%= 
       if current_member then
