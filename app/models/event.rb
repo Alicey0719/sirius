@@ -37,6 +37,6 @@ class Event < ApplicationRecord
             end
             return rel
         end
-    end
+    end    
 
 end

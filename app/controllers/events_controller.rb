@@ -49,10 +49,15 @@ class EventsController < ApplicationController
         @tags = Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
         if tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i}.present? then
             @events = Event.search(params[:sword])
-                .where("held_at >= ?",Date.today)
-                .where(tags:tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
-                .order("held_at")
+                .where("held_at >= ?",Date.today) 
+                .order("held_at")              
+                .joins(:tags)
+                .where("tags.id IN (?) ", 
+                    Tag.find(tagParams[:tag_ids].compact.delete_if(&:empty?).map{|n| n.to_i})
+                    )   
+                .distinct
                 .page(params[:page]).per(15)
+            
         else
             @events = Event.search(params[:sword])
                 .where("held_at >= ?",Date.today)

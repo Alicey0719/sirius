@@ -9,5 +9,5 @@ class Tag < ApplicationRecord
         presence: true,
         length: {minimum: 2, maximum: 15},
         uniqueness: true
-    
+        
 end
