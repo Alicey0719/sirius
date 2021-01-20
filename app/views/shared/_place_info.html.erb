@@ -1,0 +1,30 @@
+<table class="attr">
+  <tr>
+    <th>会場名</th>
+    <td><%= @place.name %></td>
+  </tr>
+  <tr>
+    <th>会場所在地</th>
+    <td><%= @place.address %></td>
+  </tr>
+  <tr>
+    <th>収容人数</th>
+    <td><%= @place.capacity %></td>
+  </tr>
+  <tr>
+    <th>会場ランク</th>
+    <td>
+      <%= if @place.rank >3 then
+                "PLATINUM"
+            elsif @place.rank >2 then
+                "GOLD"
+            elsif @place.rank >1 then
+                "SILVER"
+            elsif @place.rank >0 then
+                "BRONZE"
+            else
+                "STANDARD"
+        end%>
+    </td>
+  </tr>
+</table>
