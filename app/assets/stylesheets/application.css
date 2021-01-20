@@ -435,6 +435,39 @@ img {
 
 /*pageTop*/
 
+h1.top-title {
+    text-align: center;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+h1.top-title:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+}
+
+h1.top-title:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+
+.top-text {
+    text-align: center;
+    font-size: 27px;
+}
+
 #page_top {
     position: fixed;
     bottom: 30px;
