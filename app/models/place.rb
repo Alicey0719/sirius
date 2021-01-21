@@ -15,6 +15,6 @@ class Place < ApplicationRecord
         numericality:{less_than_or_equal_to: 99999, greater_than:0 }
     validates :rank,
         presence: true,
-        numericality: { greater_than:0 ,less_than_or_equal_to: 100}
+        numericality: { greater_than_or_equal_to:0 ,less_than_or_equal_to: 10}
 
 end
