@@ -1,6 +1,6 @@
 class Admin::PasswordsController < Admin::Base
 
-    before_action :login_required
+    before_action :admin_login_required
 
     def edit
         @admin = current_admin
