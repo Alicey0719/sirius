@@ -41,8 +41,4 @@ class Member < ApplicationRecord
         event && event.member != self && !bookmarks.exists?(event_id: event.id)
     end
 
-    def edit?
-        validation_context == :edit
-    end
-
 end
