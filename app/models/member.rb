@@ -17,6 +17,7 @@ class Member < ApplicationRecord
         presence: {if: :current_password},
         length: {minimum: 4, maximum: 32, allow_blank: true},
         format: {with: /\A[A-Za-z0-9]*\z/, allow_blank: true}
+    validates :password, presence: true, if: :new_record?
     validates :user_name,
         presence: true,
         format: {with: /\A[A-Za-z][A-Za-z0-9]*\z/, allow_blank: true},
@@ -38,6 +39,10 @@ class Member < ApplicationRecord
     #Method
     def bookmark?(event)
         event && event.member != self && !bookmarks.exists?(event_id: event.id)
+    end
+
+    def edit?
+        validation_context == :edit
     end
 
 end
