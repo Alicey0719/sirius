@@ -1,8 +1,8 @@
 # README
 
 * heroku  
-一般ページ : https://sirius-event.herokuapp.com/
-管理ページ : https://sirius-event.herokuapp.com/admin/login.html
+一般ページ : https://sirius-event.herokuapp.com/  
+管理ページ : https://sirius-event.herokuapp.com/admin/login.html  
 
 * 環境  
 ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-linux]  
